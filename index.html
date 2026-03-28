@@ -1,107 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Mahdi | Medical Intern</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamed Mahdi | Portfolio</title>
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f7f9fc;
-    color: #333;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px;
-    text-align: center;
-}
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --bg-secondary: #ffffff;
+      --text: #18222d;
+      --text-soft: #5e6b78;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border: rgba(15, 23, 42, 0.08);
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --hero-grad-1: #eff6ff;
+      --hero-grad-2: #f8fafc;
+    }
 
-h1 {
-    margin-bottom: 10px;
-}
+    body.dark {
+      --bg: #08111f;
+      --bg-secondary: rgba(255, 255, 255, 0.06);
+      --text: #f5f7fb;
+      --text-soft: #b7c2cf;
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --hero-grad-1: #0b1628;
+      --hero-grad-2: #0f2238;
+    }
 
-.subtitle {
-    color: #555;
-    margin-bottom: 30px;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
-.links a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #2E86C1;
-    font-weight: bold;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 25px;
-    background: #2E86C1;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.35s ease, color 0.35s ease;
+      line-height: 1.7;
+    }
 
-.section {
-    margin-top: 40px;
-    text-align: left;
-}
+    .navbar {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.65);
+      border-bottom: 1px solid var(--border);
+      transition: 0.35s ease;
+    }
 
-.section h2 {
-    color: #2E86C1;
-}
-</style>
+    body.dark .navbar {
+      background: rgba(8, 17, 31, 0.7);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: var(--bg-secondary);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, var(--hero-grad-1), var(--hero-grad-2));
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: fadeUp 0.9s ease;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: auto;
+      font-size: 18px;
+      color: var(--text-soft);
+    }
+
+    .buttons {
+      margin-top: 32px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-secondary);
+      color: var(--text);
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px 20px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 4px;
+      border-radius: 999px;
+      margin-top: 10px;
+      background: var(--primary);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--text-soft);
+      font-size: 15px;
+    }
+
+    .about-card {
+      font-size: 17px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-pill {
+      padding: 10px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .footer {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 30px 20px 50px;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding-top: 60px;
+      }
+    }
+  </style>
 </head>
+<body class="dark">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">Mohamed Ibrahim</a>
+      <button class="theme-toggle" id="themeToggle">☀️ Light Mode</button>
+    </div>
+  </nav>
 
-<body>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Medical Intern • AI in Healthcare • Founder</div>
+      <h1>Mohamed Gamal Mohamed Mahdi Ibrahim</h1>
+      <p>
+        Medical Intern with strong interests in medical informatics, AI-driven healthcare,
+        clinical research, and digital transformation in healthcare systems.
+      </p>
 
-<div class="container">
+      <div class="buttons">
+        <a class="btn btn-primary" href="CV.pdf" target="_blank">Download CV</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/in/moho4moho456" target="_blank">LinkedIn</a>
+        <a class="btn btn-secondary" href="https://github.com/moho4moho456" target="_blank">GitHub</a>
+        <a class="btn btn-secondary" href="https://orcid.org/0009-0000-4647-1009" target="_blank">ORCID</a>
+      </div>
+    </div>
+  </section>
 
-<h1>Mohamed Gamal Mohamed Mahdi Ibrahim</h1>
+  <section class="section">
+    <h2 class="section-title">About Me</h2>
+    <div class="card about-card">
+      I am a Medical Intern with experience spanning clinical training, healthcare innovation,
+      AI model work, and research. I founded Seshat Systems to help digitize clinical workflows
+      and improve operational efficiency in healthcare settings. I am especially interested in
+      interoperable EHR systems, clinical data integration, and practical AI solutions that improve patient care.
+    </div>
+  </section>
 
-<p class="subtitle">
-Medical Intern | AI in Healthcare | Founder @ Seshat Systems
-</p>
+  <section class="section">
+    <h2 class="section-title">Achievements</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>🥈 Smart Healthcare Hackathon</h3>
+        <p>Awarded 2nd Place for developing an AI-powered interoperable Electronic Health Record system.</p>
+      </div>
+      <div class="card">
+        <h3>🚀 Founder of Seshat Systems</h3>
+        <p>Leading a health-tech startup focused on digitizing and optimizing medical management workflows.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Research Experience</h3>
+        <p>Primary researcher on an AI-based study evaluating earphone usage among senior medical students.</p>
+      </div>
+    </div>
+  </section>
 
-<div class="links">
-    <a href="https://www.linkedin.com/in/moho4moho456" target="_blank">LinkedIn</a>
-    <a href="https://github.com/moho4moho456" target="_blank">GitHub</a>
-    <a href="https://orcid.org/0009-0000-4647-1009" target="_blank">ORCID</a>
-</div>
+  <section class="section">
+    <h2 class="section-title">Core Skills</h2>
+    <div class="skills-list">
+      <span class="skill-pill">AI in Healthcare</span>
+      <span class="skill-pill">Medical Informatics</span>
+      <span class="skill-pill">EHR Interoperability</span>
+      <span class="skill-pill">Clinical Research</span>
+      <span class="skill-pill">Advanced Excel</span>
+      <span class="skill-pill">Adobe Premiere</span>
+      <span class="skill-pill">Photoshop</span>
+      <span class="skill-pill">Project Management</span>
+    </div>
+  </section>
 
-<a class="btn" href="CV.pdf" target="_blank">
-Download CV
-</a>
+  <section class="section">
+    <h2 class="section-title">Quick Highlights</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Clinical Training</h3>
+        <p>Hands-on internship exposure in high-acuity hospital environments with active participation in patient care.</p>
+      </div>
+      <div class="card">
+        <h3>AI & Data Work</h3>
+        <p>Experience in data annotation, LLM quality assurance, and health-tech innovation projects.</p>
+      </div>
+      <div class="card">
+        <h3>Professional Focus</h3>
+        <p>Focused on building a career at the intersection of medicine, technology, and data-driven healthcare delivery.</p>
+      </div>
+    </div>
+  </section>
 
-<div class="section">
-<h2>About Me</h2>
-<p>
-Medical intern with strong interest in AI-driven healthcare solutions and medical informatics.
-Founder of Seshat Systems, working on digitizing clinical workflows and improving healthcare efficiency.
-</p>
-</div>
+  <div class="footer">
+    © 2026 Mohamed Ibrahim • Built with GitHub Pages
+  </div>
 
-<div class="section">
-<h2>Achievements</h2>
-<ul>
-<li>2nd Place – AI-powered EHR system (Banha Hackathon)</li>
-<li>Founder – HealthTech Startup (Seshat Systems)</li>
-<li>Researcher – AI in medical education</li>
-</ul>
-</div>
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+    const body = document.body;
 
-<div class="section">
-<h2>Skills</h2>
-<p>
-AI in Healthcare | Medical Informatics | Clinical Research | Excel | Photoshop | Adobe Premiere
-</p>
-</div>
+    function updateButton() {
+      if (body.classList.contains("dark")) {
+        toggleBtn.textContent = "☀️ Light Mode";
+      } else {
+        toggleBtn.textContent = "🌙 Dark Mode";
+      }
+    }
 
-</div>
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      body.classList.remove("dark");
+    } else {
+      body.classList.add("dark");
+    }
+    updateButton();
 
+    toggleBtn.addEventListener("click", function () {
+      body.classList.toggle("dark");
+
+      if (body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+
+      updateButton();
+    });
+  </script>
 </body>
 </html>
